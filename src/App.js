@@ -7,6 +7,7 @@ import Footer from './commen/footer';
 
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsAndConditions from './Term&Condition';
+import ThankYou from './commen/ThankYou';
 // import TermsAndConditions from './TermsAndConditions';
 
 function App() {
@@ -21,6 +22,16 @@ function App() {
             <>
             <Header />
               <Home />
+              <Footer />
+            </>
+          }
+        />
+                <Route
+          path="/thank-you"
+          element={
+            <>
+              <Header />
+              <ThankYou />
               <Footer />
             </>
           }

@@ -1,9 +1,48 @@
 import React, { useState } from "react";
 import { Mail, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+const SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbx5gUJRIR3xw00tYrQvjcdHNDTORpDvBFIFjcYnYwk_y6Ih3XEgR5i1Fy0a9hWbc_jcvA/exec";
+
+const emptyForm = {
+  name: "",
+  email: "",
+  phone: "",
+  journey: "",
+  message: "",
+};
+
 const InvitationPopup = ({ isOpen, onClose }) => {
-  const [journey, setJourney] = useState("");
+  const [formData, setFormData] = useState(emptyForm);
+  const [status, setStatus] = useState("idle"); // idle | submitting | error
+  const navigate = useNavigate();
 
   if (!isOpen) return null;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (status === "error") setStatus("idle");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("submitting");
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData),
+      });
+      setFormData(emptyForm);
+      setStatus("idle");
+      onClose();
+      navigate("/thank-you");
+    } catch (err) {
+      setStatus("error");
+    }
+  };
 
   return (
     <div
@@ -47,14 +86,13 @@ const InvitationPopup = ({ isOpen, onClose }) => {
         </button>
 
         {/* Form */}
-        <form className="pt-2">
-
-          {/* Name + Email */}
+        <form className="pt-2" onSubmit={handleSubmit}>
+          {/* Name + Email + Phone + Journey */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8">
-
             {/* Name */}
             <div>
               <label
+                htmlFor="name"
                 className="
                   block
                   font-['Oswald']
@@ -68,7 +106,12 @@ const InvitationPopup = ({ isOpen, onClose }) => {
               </label>
 
               <input
+                id="name"
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="
                   mt-4
                   w-full
@@ -89,6 +132,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             {/* Email */}
             <div>
               <label
+                htmlFor="email"
                 className="
                   block
                   font-['Oswald']
@@ -102,7 +146,12 @@ const InvitationPopup = ({ isOpen, onClose }) => {
               </label>
 
               <input
+                id="email"
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 placeholder="Where we should write back"
                 className="
                   mt-4
@@ -127,6 +176,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             {/* Phone */}
             <div>
               <label
+                htmlFor="phone"
                 className="
                   block
                   font-['Oswald']
@@ -140,7 +190,11 @@ const InvitationPopup = ({ isOpen, onClose }) => {
               </label>
 
               <input
+                id="phone"
                 type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="For the call, when we get there"
                 className="
                   mt-4
@@ -165,6 +219,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             {/* Journey */}
             <div>
               <label
+                htmlFor="journey"
                 className="
                   block
                   font-['Oswald']
@@ -179,8 +234,11 @@ const InvitationPopup = ({ isOpen, onClose }) => {
 
               <div className="relative">
                 <select
-                  value={journey}
-                  onChange={(e) => setJourney(e.target.value)}
+                  id="journey"
+                  name="journey"
+                  value={formData.journey}
+                  onChange={handleChange}
+                  required
                   className="
                     mt-4
                     w-full
@@ -203,13 +261,11 @@ const InvitationPopup = ({ isOpen, onClose }) => {
                     Help me choose
                   </option>
 
-                  <option value="tirthan">
+                  <option value="Tirthan Valley — 24–29 November 2026">
                     Tirthan Valley — 24–29 November 2026
                   </option>
 
-                  <option value="other">
-                    Another Journey
-                  </option>
+                  <option value="Another Journey">Another Journey</option>
                 </select>
 
                 {/* Arrow */}
@@ -228,12 +284,12 @@ const InvitationPopup = ({ isOpen, onClose }) => {
                 </span>
               </div>
             </div>
-
           </div>
 
           {/* Message */}
           <div className="mt-4">
             <label
+              htmlFor="message"
               className="
                 block
                 font-['Oswald']
@@ -247,6 +303,10 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             </label>
 
             <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               rows="4"
               placeholder="Which journey is calling you - or tell us what you're looking for, and we'll point you honestly."
               className="
@@ -275,6 +335,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
           <div className="mt-8 flex justify-center">
             <button
               type="submit"
+              disabled={status === "submitting"}
               className="
                 group
                 flex
@@ -291,9 +352,12 @@ const InvitationPopup = ({ isOpen, onClose }) => {
                 transition-all
                 duration-300
                 hover:scale-[1.03]
+                disabled:cursor-not-allowed
+                disabled:opacity-60
+                disabled:hover:scale-100
               "
             >
-              Request an Invitation
+              {status === "submitting" ? "Sending..." : "Request an Invitation"}
 
               <span
                 className="
@@ -309,6 +373,12 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             </button>
           </div>
 
+          {/* Status Messages */}
+          {status === "error" && (
+            <p className="mt-4 text-center font-['Syne'] text-red-600">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </form>
 
         {/* Bottom Contact Information */}
@@ -324,10 +394,8 @@ const InvitationPopup = ({ isOpen, onClose }) => {
             sm:grid-cols-2
           "
         >
-
           {/* Email */}
           <div className="flex flex-col items-center text-center">
-
             <div
               className="
                 flex
@@ -340,7 +408,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
                 border-neutral-900
               "
             >
-              <Mail/>
+              <Mail />
             </div>
 
             <p
@@ -359,7 +427,6 @@ const InvitationPopup = ({ isOpen, onClose }) => {
 
           {/* Location */}
           <div className="flex flex-col items-center text-center">
-
             <div
               className="
                 flex
@@ -372,7 +439,7 @@ const InvitationPopup = ({ isOpen, onClose }) => {
                 border-neutral-900
               "
             >
-              <MapPin/>
+              <MapPin />
             </div>
 
             <p
@@ -388,7 +455,6 @@ const InvitationPopup = ({ isOpen, onClose }) => {
               Pune, Maharashtra 411038
             </p>
           </div>
-
         </div>
       </div>
     </div>
