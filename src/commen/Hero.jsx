@@ -35,6 +35,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
         bg-no-repeat
         bg-[#0c0c0c]
       "
+      id="home"
     >
       {/* Background image layer — fades in only once loaded */}
       <div
@@ -94,6 +95,22 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
 >
   TRUE NORTH
 </h1>
+<p
+  className="
+    m-0
+    mt-2
+    font-['Poppins']
+    text-sm
+    font-medium
+    uppercase
+    tracking-[0.3em]
+    text-[#f4f6f4]
+    sm:text-base
+    md:text-xl
+  "
+>
+  The Fagli Edition
+</p>
 
 {/* Mobile: TRUE / NORTH stacked, gradient fades from NORTH up into TRUE */}
 {/* Mobile: TRUE / NORTH stacked, each word has its own bottom fade */}
@@ -139,7 +156,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
           <div
             className="
               absolute
-              bottom-[6%]
+              bottom-[4%]
               left-0
               right-0
               z-40
@@ -185,7 +202,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
                 sm:text-sm
               "
             >
-              24–29 November 2026 · Six days, five nights · Twenty people
+              11–16 February 2027 · Six days, five nights
             </p>
 
             <p
@@ -201,8 +218,22 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
                 sm:text-base
               "
             >
-              Six days for people who hold everything.
+              First, you. Then a festival. Then the quiet.
             </p>
+            <p
+  className="
+    m-0
+    mt-3
+    text-center
+    font-['Poppins']
+    text-xs
+    font-medium
+    tracking-wide
+    sm:text-sm
+  "
+>
+  Six days for people who hold everything.
+</p>
 
             <button
               onClick={() => setIsInvitationOpen(true)}
@@ -213,7 +244,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
                 overflow-hidden
                 rounded-full
                 bg-white
- 00               px-7
+ cl0               px-7
                 py-3
                 font-['syne']
                 text-sm
@@ -259,7 +290,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
               >
                 Request an Invitation
                 <span
-                  cl0a0ssName="
+                  className="
                     text-xl
                     leading-none
                     transition-transform

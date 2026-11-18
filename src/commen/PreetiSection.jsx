@@ -24,7 +24,7 @@ const PreetiSection = () => {
             observer.disconnect();
           }
         },
-        { threshold: 0.2 }
+        { threshold: 0.2 },
       );
 
       observer.observe(ref.current);
@@ -35,16 +35,15 @@ const PreetiSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-black">
-
+    <section className="relative w-full overflow-hidden bg-black" id="founder">
       <div className="mx-auto max-w-[1400px]">
- <div className="relative w-full  ">
-        {/* Full-width background image */}
-        <img
-          ref={imageRef}
-          src={preeti}
-          alt="Preeti Toraskar"
-          className={`
+        <div className="relative w-full  ">
+          {/* Full-width background image */}
+          <img
+            ref={imageRef}
+            src={preeti}
+            alt="Preeti Toraskar"
+            className={`
             block
             w-full
             h-[420px]
@@ -60,43 +59,41 @@ const PreetiSection = () => {
                 : "opacity-0"
             }
           `}
-        />
+          />
 
-        <div
-          className="
-            relative
-            -mt-16
-            flex
-            justify-center
-            px-4
+          <div
+            className="
+relative
+-mt-16
+flex
+justify-center
+px-0
 
-            sm:-mt-20
-            sm:px-8
+sm:-mt-20
+sm:px-0
 
-            md:absolute
+md:absolute
             md:inset-y-0
             md:left-0
             md:mt-0
             md:justify-start
             md:px-0
           "
-        >
-          <div
-            ref={boxRef}
-            className={`
-              w-full
-              max-w-md
-              bg-white
-              p-6
-              shadow-lg
+          >
+            <div
+              ref={boxRef}
+              className={`
+w-full
+max-w-none
+bg-white
+p-6
+shadow-lg
 
-              sm:p-8
+sm:p-8
 
-              md:my-auto
-              md:ml-8
-              md:max-w-lg
-              md:p-10
-              lg:ml-20
+md:my-auto
+md:ml-8
+md:max-w-lg
 
               ${
                 boxVisible
@@ -104,48 +101,44 @@ const PreetiSection = () => {
                   : "opacity-0"
               }
             `}
-          >
-            <h2 className="mb-4 font-['Oswald'] text-2xl font-bold text-neutral-900 sm:text-3xl">
-              Preeti Toraskar Leads This Journey.
-            </h2>
+            >
+              <h2 className="mb-4 font-['Oswald'] text-2xl font-bold text-neutral-900 sm:text-3xl">
+                Preeti Toraskar Leads This Journey.
+              </h2>
 
-            <div className="space-y-3 font-['Syne'] text-sm leading-relaxed text-neutral-700">
-              <p>
-                Not a coach. Not a guru. Someone who knows the ground and
-                walks it beside you.
-              </p>
+              <div className="space-y-3 font-['Syne'] text-sm leading-relaxed text-neutral-700">
+                <p>
+                  Not a coach. Not a guru. Someone who knows the ground and
+                  walks it beside you.
+                </p>
 
-              <p>
-                She spent eighteen years designing physical spaces -
-                offices, homes, the rooms where people spend their lives -
-                before concluding that the spaces most people needed were
-                not physical ones.
-              </p>
+                <p>
+                  She spent eighteen years designing physical spaces, offices,
+                  homes, the rooms where people spend their lives, before
+                  realising that the spaces most people needed were not physical
+                  ones.
+                </p>
 
-              <p>
-                She holds a Master's in Expressive Movement Therapy, which
-                covers movement, art, music and drama, and has been a
-                certified yoga teacher since 2011. She has trained under Dr
-                Daniel Siegel, and studied at Oxford with Bessel van der
-                Kolk, Esther Perel and Richard Schwartz.
-              </p>
+                <p>
+                  She holds a Master's in Expressive Arts and Movement Therapy,
+                  which covers movement, art, music and drama, and has been a
+                  certified yoga teacher since 2011. She has trained under Dr
+                  Daniel Siegel and studied at Transform Trauma, Oxford.
+                </p>
 
-              <p>
-                For four years, she has run these journeys privately, by
-                invitation. Nine of them. Half the people who came, came
-                back.
-              </p>
+                <p>
+                  For four years, she has run these journeys privately, by
+                  invitation. Nine of them. Half the people who came, came back.
+                </p>
 
-              <p>
-                True North is the first one she is opening beyond that
-                circle.
-              </p>
+                <p>
+                  True North is the first one she is opening beyond that circle.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      </div>
-     
     </section>
   );
 };

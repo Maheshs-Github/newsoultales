@@ -3,14 +3,13 @@ import React, { useState } from "react";
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const navItems = [
-    "Home",
-    "The Valley",
-    "The Six Days",
-    "What You Take Back",
-    "What You Take Back",
-    "What This Is Not",
-  ];
+const navItems = [
+  { label: "Home", id: "home" },
+  { label: "The Valley", id: "the-valley" },
+  { label: "The Six Days", id: "the-six-days" },
+  { label: "What You Take Back", id: "what-you-take-back" },
+  { label: "What This Is Not", id: "what-this-is-not" },
+];
 
   return (
    <header className="fixed top-0 left-0 z-50 w-full bg-black/20 px-4 py-5 backdrop-blur-md sm:px-8 md:px-12 lg:absolute lg:bg-transparent lg:px-20 lg:py-4 lg:backdrop-blur-none">
@@ -35,18 +34,18 @@ const Header = () => {
 
             return (
               <a
-                key={item + "-" + index}
-                href="#"
+                key={item?.id}
+                 href={`#${item.id}`}
                 className={linkClass}
               >
-                {item}
+                {item.label}
               </a>
             );
           })}
 
           {/* Founder */}
           <a
-            href="#"
+            href="#founder"
             className="ml-2 whitespace-nowrap px-3 font-[Inter] text-sm font-normal text-white transition-opacity hover:opacity-70 xl:ml-3 xl:px-4 xl:text-base"
           >
             Preeti - Founder
@@ -102,18 +101,18 @@ const Header = () => {
 
             return (
               <a
-                key={item + "-mobile-" + index}
-                href="#"
+                key={item?.id}
+                href={`#${item?.id}`}
                 className={linkClass}
               >
-                {item}
+                {item.label}
               </a>
             );
           })}
 
           {/* Founder */}
           <a
-            href="#"
+            href="#founder"
             className="w-full border-t border-white/20 py-3 pt-4 font-[Inter] text-base font-normal text-white transition-opacity hover:opacity-70"
           >
             Preeti - Founder

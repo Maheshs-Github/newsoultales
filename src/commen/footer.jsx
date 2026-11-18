@@ -3,7 +3,7 @@ import footerBg from "../assets/footerimg.webp";
 import footerlogo from "../assets/footerlogo.webp";
 import { MoveRight } from "lucide-react";
 import InvitationPopup from "./InvitationPopup";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const quickLinks = [
@@ -34,7 +34,7 @@ const Footer = () => {
           setLogoVisible(false);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(el);
@@ -44,7 +44,7 @@ const Footer = () => {
   return (
     <footer
       className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat text-white"
-    style={{ backgroundImage: "url('/footerimg.webp')" }}
+      style={{ backgroundImage: "url('/footerimg.webp')" }}
     >
       {/* Local keyframes for the top shimmer line */}
       <style>{`
@@ -83,7 +83,10 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-white/80">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a href="#" className="transition-opacity hover:opacity-70 font-[inter] text-lg">
+                  <a
+                    href="#"
+                    className="transition-opacity hover:opacity-70 font-[inter] text-lg"
+                  >
                     {link}
                   </a>
                 </li>
@@ -94,8 +97,16 @@ const Footer = () => {
           {/* Center Content */}
           <div className="order-first flex flex-col items-center text-center md:order-none py-14">
             <h2 className="font-['Oswald'] text-xl font-semibold leading-snug sm:text-2xl">
-              What Made You Dependable Is What Made You Disappear.
+              What made you dependable is what made you disappear.
             </h2>
+
+            {/* NEW: dates and early-booking line */}
+            <p className="mt-4 font-['Syne'] text-sm text-white/90 sm:text-base">
+              11–16 February 2027 · Tirthan Valley
+            </p>
+            <p className="mt-1 font-['Syne'] text-sm text-white/70 sm:text-base">
+              Book by 30th November and save ₹12,000.
+            </p>
 
             <button
               onClick={() => setIsInvitationOpen(true)}
@@ -174,7 +185,10 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-white/80">
               {socialLinks.map((link, index) => (
                 <li key={index}>
-                  <a href="#" className="transition-opacity hover:opacity-70 font-[inter] text-lg">
+                  <a
+                    href="#"
+                    className="transition-opacity hover:opacity-70 font-[inter] text-lg"
+                  >
                     {link}
                   </a>
                 </li>
@@ -200,15 +214,15 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="py-5 flex flex-col items-center gap-3     text-xs text-white/70 sm:mt-14 sm:flex-row sm:justify-between">
           <p>© 2026 Soul Tales. All rights reserved.</p>
-         <Link
-  to="https://osumare.com/"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <p className="order-first sm:order-none font-[oswald] text-xl text-white">
-    Thoughtfully Curated And Marketed By Osumare
-  </p>
-</Link>
+          <Link
+            to="https://osumare.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p className="order-first sm:order-none font-[oswald] text-xl text-white">
+              Thoughtfully Curated And Marketed By Osumare
+            </p>
+          </Link>
           <div className="flex gap-4">
             <a href="/privacy-policy" className="hover:opacity-70">
               Privacy Policy

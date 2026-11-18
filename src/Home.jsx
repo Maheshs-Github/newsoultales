@@ -62,42 +62,46 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
       <Hero/>
 
      
+ 
+<section className="px-4 py-14 sm:px-6 md:py-20">
+  <div className="mx-auto max-w-2xl text-center">
 
-      <section className="px-4 py-14 sm:px-6 md:py-20">
-        <div className="mx-auto max-w-2xl text-center">
+<p className="font-['Syne'] text-sm sm:text-lg" id="the-valley">
+  In February, the Tirthan runs cold and clear, loud enough that you
+  stop trying to think over it. Wooden villages sit on the slopes, and
+  the Great Himalayan National Park begins where the road gives up.
 
-          <p className="font-['Syne'] text-sm sm:text-lg">
-            The Tirthan runs past loud enough that you stop trying to think
-            over it. The Great Himalayan National Park begins where the road
-            gives up. Wooden temples stand in villages nobody has rearranged
-            for photographs.
+  <br />
+  <br />
 
-            <br />
+  This is also the month of Fagli. The villages put on carved wooden
+  masks, the drums start, and they dance winter out of the valley to
+  welcome spring. We go as guests.
 
-            By four in the afternoon in late November there is woodsmoke in
-            the air, the light goes thin and clear, and it is cold enough
-            that a fire becomes the obvious place to sit. No queues. No
-            sights to tick. River, forest, village, sky.
-          </p>
+  <br />
+  <br />
 
-          <h2
-            className="
-              mt-4
-              font-['Oswald']
-              text-2xl
-              font-semibold
+  No queues. No sights to tick. River, forest, fire, and a festival
+  older than anyone can remember.
+</p>
 
-              sm:text-3xl
-              md:mt-2
-              md:text-4xl
-            "
-          >
-            Six days here. One question: what happens when it finally goes
-            quiet?
-          </h2>
+    <h2
+      className="
+        mt-4
+        font-['Oswald']
+        text-2xl
+        font-semibold
 
-        </div>
-      </section>
+        sm:text-3xl
+        md:mt-2
+        md:text-4xl
+      "
+    >
+      Six days here. One question: what happens when you finally put it all down?
+    </h2>
+
+  </div>
+</section>
 
        
 
@@ -166,81 +170,79 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
         animationDelay: "0.5s",
       }}
     >
-      <h2
-        className="
-          mb-6
-          font-['Oswald']
-          text-2xl
-          font-semibold
-          text-neutral-900
+<h2
+  className="
+    mb-6
+    font-['Oswald']
+    text-2xl
+    font-semibold
+    text-neutral-900
 
-          sm:text-3xl
-          md:text-4xl
-        "
-      >
-        You Are The One Who Holds It.
-      </h2>
+    sm:text-3xl
+    md:text-4xl
+  "
+>
+  You are the one who holds it.
+</h2>
 
-      <p
-        className="
-          mb-6
-          font-['Syne']
-          text-base
-          font-medium
-          leading-relaxed
-          text-[#141313]
+<p
+  className="
+    mb-6
+    font-['Syne']
+    text-base
+    font-medium
+    leading-relaxed
+    text-[#141313]
 
-          sm:text-lg
-        "
-      >
-        At work, they bring you the thing nobody else can fix. At home,
-        you are the one who knows where everything is kept, which
-        forms are due, who is not doing well this month. Your parents
-        call you first. Your team calls you first. Somebody in your
-        family has a health thing, and you are managing it.
-      </p>
+    sm:text-lg
+  "
+>
+At work, they bring you the thing nobody else can fix. At home, you
+are the one who knows where everything is kept, what is due, and who
+is not doing well this month. Your parents call you first. Your team
+calls you first.
+</p>
 
-      <p
-        className="
-          mb-6
-          font-['Syne']
-          text-lg
-          font-bold
-          text-neutral-900
+<p
+  className="
+    mb-6
+    font-['Syne']
+    text-lg
+    font-bold
+    text-neutral-900
 
-          sm:text-xl
-        "
-      >
-        You are good at all of it. That is precisely the difficulty.
-      </p>
+    sm:text-xl
+  "
+>
+  You are good at all of it. That is exactly the problem.
+</p>
 
-      <p
-        className="
-          mb-6
-          font-['Syne']
-          text-base
-          font-medium
-          leading-relaxed
-          text-[#141313]
+<p
+  className="
+    mb-6
+    font-['Syne']
+    text-base
+    font-medium
+    leading-relaxed
+    text-[#141313]
 
-          sm:text-lg
-        "
-      >
-        Ask you what you want for dinner, and you will ask what
-        everybody else wants. It is not a big thing. It is just that
-        somewhere in the last few years, the person who was doing all
-        the holding got put down somewhere and never quite picked back
-        up.
+    sm:text-lg
+  "
+>
+  Ask you what you want for dinner, and you will ask what everybody
+else wants. It is not a big thing. It is just that somewhere in the
+last few years, the person doing all the holding got put down
+somewhere and never quite picked back up.
 
-        <br />
+<br />
+<br />
 
-        That does not announce itself. It arrives as sleep that isn't
-        rest. A shorter fuse with the people you love most and the
-        longest patience for people who don't matter. Sunday evenings
-        that feel heavier than they should. Being told you're doing
-        amazingly by people who have no idea.
-      </p>
-
+It does not announce itself. It shows up as sleep that doesn't rest
+you. A short temper with the people you love most, and endless
+patience for people who don't matter. Sunday evenings that feel
+heavier than they should. Being told you are doing amazingly by
+people who have no idea.
+</p>
      <button
   onClick={() => setIsInvitationOpen(true)}
   className="
@@ -316,226 +318,238 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
         className="mt-20 bg-[#f7f0ea] py-20  "
       >
 
-        <div className="mx-auto max-w-[1400px] ">
- <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+<div className="mx-auto max-w-[1400px]">
+  <div className="mx-auto max-w-[1100px] px-6 md:px-10">
 
-          <h2
-            className={`
-              mb-6
-              font-['Oswald']
-              text-4xl
-              font-semibold
-              text-neutral-900
+    {/* HEADING: text changed */}
+    <h2
+      className={`
+        mb-6
+        font-['Oswald']
+        text-4xl
+        font-semibold
+        text-neutral-900
 
-              sm:text-5xl
-              md:text-4xl
+        sm:text-5xl
+        md:text-4xl
 
-              opacity-0
+        opacity-0
 
-              ${
-                anotherYearVisible
-                  ? "animate-[headingFromLeft_1s_cubic-bezier(.65,0,.35,1)_both]"
-                  : ""
-              }
-            `}
-          >
-            Another year of this.
-          </h2>
+        ${
+          anotherYearVisible
+            ? "animate-[headingFromLeft_1s_cubic-bezier(.65,0,.35,1)_both]"
+            : ""
+        }
+      `}
+    >
+      Another year of this.
+    </h2>
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+    {/* 1 - medium, delay 0.2s */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              opacity-0
+        opacity-0
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.2s" }}
-          >
-            Not a crisis. That’s the thing about it - there’s no crisis.
-            You’ll be fine.
-          </p>
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.2s" }}
+    >
+      Not a crisis. That is the thing about it. There is no crisis. You will be fine.
+    </p>
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+    {/* 2 - medium, delay 0.35s */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              opacity-0
+        opacity-0
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.35s" }}
-          >
-            You’ll be fine next November too. The calendar will look roughly
-            the way it looks now. The same people will need the same things.
-            There will be a new version of the thing that’s currently taking
-            up most of your head, and you’ll handle that one as well.
-          </p>
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.35s" }}
+    >
+      You will be fine next February too. The calendar will look much the same.
+      The same people will need the same things. There will be a new version of
+      whatever is taking up most of your head right now, and you will handle
+      that one as well.
+    </p>
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+    {/* 3 - BOLD, delay 0.5s */}
+    <p
+      className={`
+        mb-3
+        mt-6
+        font-['Syne']
+        text-lg
+        font-bold
+        leading-snug
+        text-neutral-900
 
-              opacity-0
+        sm:text-xl
+        md:text-xl
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.5s" }}
-          >
-            What changes, quietly, is the margin.
-          </p>
+        opacity-0
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.5s" }}
+    >
+      What changes, quietly, is the margin.
+    </p>
 
-              opacity-0
+    {/* 4 - medium, delay 0.65s (NEW) */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.65s" }}
-          >
-            The fuse is a little shorter than it was two years ago, and
-            shortest with the two or three people you would say you love most.
-            That’s the part nobody tells you: the patience goes to the people
-            who don’t matter, and the sharpness goes home. You have started
-            to hear it in your own voice, and you have started to apologise
-            for it more often.
-          </p>
+        opacity-0
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.65s" }}
+    >
+      The fuse gets a little shorter, and shortest with the two or three people
+      you love most. That is the part nobody tells you. The patience goes to
+      people who don't matter, and the sharpness goes home. You have started to
+      hear it in your own voice.
+    </p>
 
-              opacity-0
+    {/* 5 - medium, delay 0.8s (NEW) */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.8s" }}
-          >
-            Your body has been sending small notices. You have been filing
-            them.
-          </p>
+        opacity-0
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.8s" }}
+    >
+      Your body has been sending small notices. You have been filing them away.
+    </p>
 
-              opacity-0
+    {/* 6 - medium, delay 0.95s (NEW) */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "0.95s" }}
-          >
-            And your own preferences have quietly gone out of use. Somebody
-            asks what you feel like eating, and there’s genuinely nothing
-            there. Not sacrifice - just a muscle that stopped being needed
-            and got weaker, the way muscles do.
-          </p>
+        opacity-0
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "0.95s" }}
+    >
+      And your own wants have quietly gone out of use. Somebody asks what you
+      feel like doing, and there is nothing there. Not sacrifice. Just a muscle
+      that stopped being used.
+    </p>
 
-              opacity-0
+    {/* 7 - medium, delay 1.1s (NEW) */}
+    <p
+      className={`
+        mb-3
+        font-['Syne']
+        text-lg
+        font-medium
+        leading-relaxed
+        text-[#141313]
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "1.1s" }}
-          >
-            You will keep going. You are extremely good at keeping going.
-            That has never been in question.
-          </p>
+        opacity-0
 
-          <p
-            className={`
-              mb-3
-              font-['Syne']
-              text-lg
-              font-medium
-              leading-relaxed
-              text-[#141313]
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "1.1s" }}
+    >
+      You will keep going. You are very good at keeping going. That has never
+      been the question.
+    </p>
 
-              opacity-0
+    {/* 8 - BOLD, delay 1.25s */}
+    <p
+      className={`
+        mb-3
+        mt-6
+        font-['Syne']
+        text-lg
+        font-bold
+        leading-snug
+        text-neutral-900
 
-              ${
-                anotherYearVisible
-                  ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
-                  : ""
-              }
-            `}
-            style={{ animationDelay: "1.25s" }}
-          >
-            The only real question is what it will have cost by the time
-            somebody finally makes you stop - and whether it happens on a
-            date you chose, or one you didn’t.
-          </p>
+        sm:text-xl
+        md:text-xl
 
-        </div>
-        </div>
+        opacity-0
+
+        ${
+          anotherYearVisible
+            ? "animate-[paragraphFromBottom_.9s_ease-out_both]"
+            : ""
+        }
+      `}
+      style={{ animationDelay: "1.25s" }}
+    >
+      The real question is what it will have cost by the time something finally
+      makes you stop, and whether that happens on a date you chose, or one you
+      didn't.
+    </p>
+
+  </div>
+</div>
        
 
       

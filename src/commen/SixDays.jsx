@@ -10,64 +10,62 @@ const days = [
   {
     img: day1,
     label: "DAY 01",
-    title: "Arrive",
+    title: "Thaw",
     position: "object-center",
     paras: [
-      "An hour up from Bhuntar and the road narrows until it is following the river. You arrive in the afternoon. Tea, a room, time to put things down.",
-      "That evening the first circle, and then dinner with other people you have not met, chosen carefully so the room holds. Nobody asks what you do for a living. It is a strange relief, and it takes most people about an hour to stop reaching for the answer anyway.",
+      "You arrive in the afternoon, settle in, and put the journey down. By the evening, the city has started to leave your body. Most people laugh more on the first night than they expected to. Nobody asks what you do for a living. It is a strange relief.",
     ],
   },
   {
     img: day2,
     label: "DAY 02",
-    title: "Slow",
+    title: "Mask",
     position: "object-center",
     paras: [
-      "Mornings begin in circle. Not sharing for the sake of it - a specific piece of work each day, done together. Today is about the yes. The one that leaves your mouth before you have decided anything. Where you learned it, who it was for, and what it has cost to keep saying it.",
-      "Then the valley, at walking pace. A village, a temple older than any building you have stood in. The afternoon is unstructured, and that is deliberate. Most people find the first empty afternoon harder than a climb.",
+      "We all wear a face to get through life: the one that works hard, says yes, and keeps it all together. Today, you get to look at yours. By the end of the day, you will understand which parts of you keep getting in your way, and why they have been working so hard. Expect a lot of laughter along the way.",
     ],
   },
   {
     img: day3,
     label: "DAY 03",
-    title: "Say",
+    title: "Fagli",
     position: "object-center",
     paras: [
-      "There is a morning where you say the thing out loud to someone who is not in the room. It sounds odd written down. It is not odd when it happens. People have been carrying a sentence for eleven years, sometimes twenty, and there has never been a safe place to put it down. Here there is, and there are fifteen people who will not flinch when you do. The afternoon is left long and quiet on purpose. In the evening, fire.",
+      "The valley's festival day. We walk through a village and visit an old temple, then join the celebration as guests, with a local host. Masks, drums, and a whole valley saying goodbye to winter. What happens after that, around the fire, we will leave for you to find out."
     ],
   },
   {
     img: day4,
     label: "DAY 04",
-    title: "Alone",
+    title: "Unmask",
     position: "object-center",
     paras: [
-      "A morning by yourself at the water. No phone, no book, no task. A few hours in which nobody requires anything of you at all. Most people expect this to be the easy day. It is usually the one they still talk about two years later. Something arrives when there is nothing left to manage, and it does not tend to arrive any other way. We gather again in the evening. You say what you want to say, or you say nothing.",
+      "The deepest day, and the quietest. You go inward, gently, at your own pace. Things you have carried for a long time finally get some room. By the evening, most people feel lighter than they have in years. It falls on 14 February. This year, the date is with yourself."
     ],
   },
   {
     img: day5,
     label: "DAY 05",
-    title: "Gather",
+    title: "Spring",
     position: "object-center",
     paras: [
-      "Local food, cooked by people from this valley, eaten together. Not a demonstration and not a cultural programme. You eat what they eat. There is a particular thing that happens when you are fed by people who want nothing from you. It is difficult to describe in advance, and most people go quiet afterwards. In the afternoon, one thing to take home. A single practice, small enough that you will still be doing it in February. The last evening circle runs long. The fire stays lit.",
+      "A slow morning. No alarm. Then a day lived the way you have always wanted to live one: in the forest, by a waterfall, painting, sleeping, or doing nothing at all. You choose. You will end the day knowing what you want more of in your life."
     ],
   },
   {
     img: day6,
     label: "DAY 06",
-    title: "Carry",
+    title: "True North ",
     position: "object-bottom",
     paras: [
-      "Early, by the water, before the valley wakes. The closing. Everyone names one thing they are taking back and one thing they are leaving in Tirthan. Said out loud, in front of the people who were there. It takes about forty minutes and it is the part nobody forgets. Breakfast. Then the drive down. You will not be a different person by Thursday. That is not the promise. But you will have somewhere to stand, and one or two things you did not know a week ago that will be difficult to un-know.",
+      "The last morning brings everything together. We won't say more than that. You leave with clarity on one thing you want next, and a simple way to keep it alive at home. You won't be a different person by the time you get home. That isn't the promise. But you will know which way you are facing"
     ],
   },
 ];
 
 const SixDays = () => {
   return (
-    <>
+    <div id="the-six-days">
       {days.map((d) => (
         <section
           key={d.label}
@@ -102,7 +100,7 @@ const SixDays = () => {
 
           {/* Content */}
           <div className="mx-auto max-w-[1200px] text-center">
-            <h2 className="mt-3 font-['Oswald'] text-4xl font-bold">
+            <h2 className="mt-3 font-['Oswald'] text-4xl font-bold ">
               {d.title}
             </h2>
 
@@ -117,7 +115,7 @@ const SixDays = () => {
           </div>
         </section>
       ))}
-    </>
+    </div>
   );
 };
 

@@ -6,40 +6,46 @@ const WhatYouTakeBack = () => {
   const headingRef = useRef(null);
   const cardRefs = useRef([]);
 
+  // CHANGED: 7 cards, each with a title and a body paragraph
+  const intro =
+    "Nobody comes back from six days a different person, and anyone promising that is selling something. Here is what actually comes back with you.";
+
   const cards = [
     {
-      title: "A Sentence You Have Never Said Out Loud.",
-      text: "Said, on Day 3, in front of people who did not flinch. That specific thing you've been carrying for eleven years - it doesn't disappear, but it stops being a private weight, and that changes what it can do to you.",
+      title: "A weight you finally put down.",
+      body: "The thing you have been carrying quietly for years doesn't disappear. But it stops being a private weight, and that changes what it can do to you.",
     },
     {
-      title: "One Thing You Can Use On A Bad Tuesday.",
-      text: "A single practice, taught on Day 5, small enough that you'll still be doing it in February. Not a routine you'll abandon by the second week. One thing, for the moment in the car park before you go back in.",
+      title: "One thing you can use on a bad Tuesday.",
+      body: "A simple daily practice, five minutes long, small enough that you will still be doing it in April. Not a routine you will drop by the second week. One thing, for the moment in the car park before you walk back in.",
     },
     {
-      title: "Your Own Preferences, Back In Working Order.",
-      text: "By Day 4 most people can answer the question about dinner. It sounds trivial. It is the beginning of everything else.",
+      title: "Your own wants, back in working order.",
+      body: "By the middle of the week, most people can answer the question about dinner again. It sounds small. It is the beginning of everything else.",
     },
     {
-      title: "Fifteen People Who Saw You Without It On.",
-      text: "You have colleagues, clients, family, and possibly not one person who has seen you undefended. After six days by the same fire, sixteen people have. That doesn't expire in December - half the people who have come on these journeys have come back, and most of them came back for the room, not the valley.",
+      title: "People who saw you without the mask.",
+      body: "You have colleagues, clients and family, and possibly not one person who has seen you without your guard up. After six days by the same fire, a small circle has. That doesn't end when you leave.",
     },
     {
-      title: "Twelve Months, Not Six Days.",
-      text: "The circle stays. One prompt a month. A group call at six weeks, dated before you leave. A one-to-one with Preeti at three months. An open seat at the next edition's opening circle, wherever it is.",
+      title: "January to March, not just six days.",
+      body: "It starts with a one-to-one call with me in January, and a few small things to try at home. After the valley, your circle stays together online until the end of March, with a WhatsApp group to keep you going.",
     },
     {
-      title: "What You Made.",
-      text: "Objects, written pages, and one photograph of you that is not a group photo. In March a letter arrives that you wrote to yourself in Tirthan and will have forgotten posting.",
+      title: "What you made.",
+      body: "Things made with your own hands, written pages, and a short film of the last morning. Small reminders of the person you met in the valley.",
     },
     {
-      title: "And The Part Other People Notice.",
-      text: `Nobody at home will ask about the river. What they will notice, four to six weeks later, is that you're not snapping. That you finished a sentence you'd normally have cut short. That you were actually in the room at dinner.
-
-That's the return. It doesn't show up in your calendar. It shows up in the people around you.`,
+      title: "And the part other people notice.",
+      body: "Nobody at home will ask about the river. What they will notice, a few weeks later, is that you are not snapping. That you finished a sentence you would normally have cut short. That you were actually in the room at dinner.",
     },
   ];
 
-  // Observer for heading/subheading
+  // CHANGED: closing text
+  const closingLine =
+    "That is the return. It doesn't show up in your calendar. It shows up in the people around you.";
+
+  // Observer for heading
   useEffect(() => {
     const element = headingRef.current;
     if (!element) return;
@@ -51,15 +57,15 @@ That's the return. It doesn't show up in your calendar. It shows up in the peopl
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  // Separate observer for EACH card, so it animates only when
-  // that individual card enters the viewport
+  // Separate observer for EACH card (and the closing line), so each
+  // animates only when it enters the viewport
   useEffect(() => {
     const observers = [];
 
@@ -73,7 +79,7 @@ That's the return. It doesn't show up in your calendar. It shows up in the peopl
             observer.disconnect();
           }
         },
-        { threshold: 0.2 }
+        { threshold: 0.2 },
       );
 
       observer.observe(el);
@@ -83,12 +89,17 @@ That's the return. It doesn't show up in your calendar. It shows up in the peopl
     return () => observers.forEach((o) => o.disconnect());
   }, []);
 
+  const introIndex = cards.length;
+  const closingIndex = cards.length + 1;
+
   return (
     <>
-      <section className="w-full bg-white px-4 py-16 sm:px-8 sm:py-6 md:px-12 lg:px-20 mx-auto max-w-[1400px] ">
+      <section
+        className="w-full bg-white px-4 py-16 sm:px-8 sm:py-6 md:px-12 lg:px-20 mx-auto max-w-[1400px] mt-10 "
+        id="what-you-take-back"
+      >
         <div className="mx-auto">
-
-          {/* Heading */}
+          {/* Heading: CHANGED text */}
           <h2
             ref={headingRef}
             className={`text-center font-['Oswald'] text-3xl font-semibold text-neutral-900 sm:text-4xl ${
@@ -97,30 +108,30 @@ That's the return. It doesn't show up in your calendar. It shows up in the peopl
                 : "opacity-0"
             }`}
           >
-            What You Take Back.
+            What you take back.
           </h2>
 
-          {/* Subheading */}
+          {/* NEW: intro paragraph */}
           <p
-            className={`mx-auto mt-4 max-w-xl text-center font-['Syne'] text-sm text-neutral-600 sm:text-base ${
-              headingVisible
-                ? "animate-[fromRight_1.5s_ease-out_0.15s_both]"
-                : "opacity-0"
+            ref={(el) => (cardRefs.current[introIndex] = el)}
+            className={`mx-auto mt-4 max-w-2xl text-center font-['Syne'] text-base text-neutral-700 sm:text-lg ${
+              visibleCards[introIndex] ? "" : "opacity-0"
             }`}
+            style={
+              visibleCards[introIndex]
+                ? { animation: "fromLeft 1s ease-out both" }
+                : undefined
+            }
           >
-            Nobody comes back from six days a different person, and anyone
-            promising that is selling something. Here is what actually comes
-            back with you.
+            {intro}
           </p>
 
-          {/* Cards */}
-          <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+          {/* Cards: CHANGED grid to md:grid-cols-2 lg:grid-cols-3 */}
+          <div className="mt-5 grid grid-cols-1 gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
             {cards.map((card, index) => {
-              const isLast = index === cards.length - 1;
-              const row = Math.floor(index / 3);
-              const isEvenRow = row % 2 === 0;
-              const direction = isEvenRow ? "fromLeft" : "fromRight";
+              const direction = index % 2 === 0 ? "fromLeft" : "fromRight";
               const isVisible = visibleCards[index];
+              const isLast = index === cards.length - 1;
 
               return (
                 <div
@@ -128,31 +139,40 @@ That's the return. It doesn't show up in your calendar. It shows up in the peopl
                   ref={(el) => (cardRefs.current[index] = el)}
                   className={`bg-[#FCF8F5] p-6 text-left sm:p-7 ${
                     isLast
-                      ? "sm:col-span-2 sm:mx-auto sm:w-full sm:max-w-md lg:col-span-1 lg:col-start-2 lg:mx-0 lg:w-auto lg:max-w-none"
+                      ? "md:col-span-2 md:mx-auto md:max-w-[calc(50%-0.625rem)] lg:col-span-1 lg:col-start-2 lg:max-w-none"
                       : ""
                   } ${isVisible ? "" : "opacity-0"}`}
                   style={
                     isVisible
-                      ? {
-                          animation: `${direction} 1s ease-out both`,
-                        }
+                      ? { animation: `${direction} 1s ease-out both` }
                       : undefined
                   }
                 >
-                  {/* Card Title */}
-                  <h3 className="font-['Oswald'] text-xl font-semibold leading-tight text-neutral-900 sm:text-xl">
+                  <h3 className="font-['Oswald'] text-xl font-semibold leading-tight text-neutral-900">
                     {card.title}
                   </h3>
-
-                  {/* Card Text */}
-                  <p className="mt-4 whitespace-pre-line font-['Syne'] text-sm leading-7 text-neutral-600 sm:text-base">
-                    {card.text}
+                  <p className="mt-4 font-['Syne'] text-sm leading-7 text-neutral-600 sm:text-base">
+                    {card.body}
                   </p>
                 </div>
               );
             })}
           </div>
 
+          {/* Closing line: CHANGED text */}
+          <p
+            ref={(el) => (cardRefs.current[closingIndex] = el)}
+            className={`mx-auto mt-8 max-w-2xl text-center font-['Syne'] text-base italic text-neutral-700 sm:mt-10 sm:text-lg ${
+              visibleCards[closingIndex] ? "" : "opacity-0"
+            }`}
+            style={
+              visibleCards[closingIndex]
+                ? { animation: "fromRight 1s ease-out both" }
+                : undefined
+            }
+          >
+            {closingLine}
+          </p>
         </div>
       </section>
     </>

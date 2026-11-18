@@ -3,36 +3,54 @@ import React, { useState } from "react";
 const EverythingYouNeedToKnow = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
+  // CHANGED: all content updated to the new copy.
+  // Supported fields per item:
+  //   content: string (one paragraph) OR array (bullet list)
+  //   lines:   array of separate paragraphs (NEW, used for the pricing)
+  //   note:    extra paragraph shown below everything else (NEW, used for "Not included")
   const items = [
     {
-      title: "Dates And Location",
+      title: "Dates and location",
       content:
-        "24–29 November 2026. Six days, five nights. Tirthan Valley, Himachal Pradesh, at the edge of the Great Himalayan National Park.",
+        "11–16 February 2027. Six days, five nights. Tirthan Valley, Himachal Pradesh, at a boutique riverside stay.",
     },
     {
-      title: "The Circle",
+      title: "The circle",
       content:
-        "Twenty people, most arriving alone. Ages typically range from early thirties to mid fifties. Everyone is holding something - a role, a family, a business - and most have not had a real conversation about it in years.",
+        "A small circle. All genders. Everyone speaks to me before a place is confirmed, and I take every one of those calls myself.",
     },
     {
-      title: "What It Costs",
-      content:
-        "Details are shared on the invitation call, once we know it is the right fit on both sides. This is not a mass-market retreat, and pricing reflects that.",
+      title: "What it costs",
+      lines: [
+        "₹60,000 per person if you book by 30th November 2026.",
+        "₹72,000 per person after that.",
+        "Save ₹12,000 by booking early. ₹20,000 holds your place, and the rest can be paid in parts.",
+      ],
     },
     {
-      title: "What It Includes",
-      content:
-        "Accommodation, all meals, all sessions and practices, transfers within the valley, and the twelve months of follow-up afterward. Flights to Delhi and personal expenses are not included.",
+      title: "What it includes",
+      content: [
+        "Your stay: five nights in Tirthan Valley, with all meals, fresh, local and home-style.",
+        "The six days: about 25 hours of guided work together, all led by me, through movement, art, music, meditation and group circles. All materials included.",
+        "The valley: the Fagli festival with a local host, plus village, forest and waterfall walks.",
+        "Before and after: a one-to-one call with me in January, then online circles and a WhatsApp group until the end of March.",
+      ],
+      note: "Not included: travel to and from Tirthan Valley, travel insurance and personal expenses.",
     },
     {
-      title: "Getting There",
+      title: "Want more time in the valley?",
       content:
-        "Fly into Delhi or Chandigarh, then a scenic drive into the valley. Full transfer details and a suggested travel itinerary are sent once you're confirmed.",
+        "You can add a night before (10 February) or after (17 February) at an additional cost. Both include a short one-to-one with me.",
     },
     {
-      title: "How This Works",
+      title: "Getting there",
       content:
-        "You request an invitation. We get on a short call to make sure this is the right room for you. If it is, you're in. If it isn't, we'll tell you honestly, and that's the end of it.",
+        "Fly to Bhuntar (Kullu), then drive along the river into the valley. Or fly to Chandigarh and drive up. Full travel notes come once you have joined.",
+    },
+    {
+      title: "How this works",
+      content:
+        "Fill in the form. It takes a few minutes, and the questions are real ones. If it looks like a fit, we will send you a time for a short call with me. If it feels right for both of us after that, your place is held. There is no payment link on this page, and there won't be one.",
     },
   ];
 
@@ -76,17 +94,45 @@ const EverythingYouNeedToKnow = () => {
                   </span>
                 </button>
 
-                {/* Accordion Content */}
+                {/* Accordion Content (CHANGED: max-h-96 -> max-h-[32rem] so longer items don't get cut off) */}
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
                     isOpen
-                      ? "max-h-96 pb-5 opacity-100"
+                      ? "max-h-[32rem] pb-5 opacity-100"
                       : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="pr-8 text-sm leading-relaxed text-neutral-600 font-[syne]">
-                    {item.content}
-                  </p>
+                  {/* Single paragraph */}
+                  {typeof item.content === "string" && (
+                    <p className="pr-8 text-sm leading-relaxed text-neutral-600 font-[syne]">
+                      {item.content}
+                    </p>
+                  )}
+
+                  {/* Bullet list */}
+                  {Array.isArray(item.content) && (
+                    <ul className="list-disc space-y-2 pr-8 pl-5 text-sm leading-relaxed text-neutral-600 font-[syne]">
+                      {item.content.map((detail) => (
+                        <li key={detail}>{detail}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* NEW: separate paragraphs (pricing) */}
+                  {item.lines && (
+                    <div className="space-y-2 pr-8 text-sm leading-relaxed text-neutral-600 font-[syne]">
+                      {item.lines.map((line) => (
+                        <p key={line}>{line}</p>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* NEW: note below the content ("Not included") */}
+                  {item.note && (
+                    <p className="mt-4 pr-8 text-sm leading-relaxed text-neutral-600 font-[syne]">
+                      {item.note}
+                    </p>
+                  )}
                 </div>
               </div>
             );

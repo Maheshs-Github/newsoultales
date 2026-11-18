@@ -1,43 +1,46 @@
 import React, { useEffect, useRef, useState } from "react";
 import preeti from "../assets/preeti.webp";
-import {MoveRight} from "lucide-react"
+import { MoveRight } from "lucide-react";
 import InvitationPopup from "./InvitationPopup";
+
 const WhatThisIsNot = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [preetiVisible, setPreetiVisible] = useState(false);
-const [isInvitationOpen, setIsInvitationOpen] = useState(false);
+  const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   const sectionRef = useRef(null);
   const preetiSectionRef = useRef(null);
 
-  // Combined into row pairs so the grid is a true 2-col x 3-row layout.
-  // Row 1: left/right item 1 | Row 2: left/right item 2 | Row 3: left item 3 + button / right item 2
+  // CHANGED: new content. 6 items = 3 rows x 2 columns, every cell filled.
   const rows = [
     {
       left: {
-        title: "It Is Not A Trek.",
+        title: "It is not a trek.",
         text: "There is walking. There is no summit, no distance to cover, nothing to complete.",
       },
       right: {
-        title: "It Is Not Therapy.",
-        text: "The work is real and it is structured, but it is a facilitated circle, not treatment. Preeti is trained in expressive movement theropy - she is not your therapist for these six days. If you are in the middle of something acute, this is not the right room, and we will say so on the call.",
+        title: "It is not therapy.",
+        text: "The work is real, and it is structured, but it is a guided group journey, not treatment. If you are in the middle of something acute, this is not the right time, and I will tell you so honestly on our call.",
       },
     },
     {
       left: {
-        title: "It Is Not A Silent Retreat.",
-        text: "Nobody will ask you to stop speaking, or to meditate, or to give up your coffee.",
+        title: "It is not a dance class.",
+        text: "You don't need to be good at movement, art or music. Nothing you make is judged.",
       },
       right: {
-        title: "It Is Not A Networking Room.",
-        text: "People here will not be trading business cards, and the fact that nobody asks what you do is not an accident.",
+        title: "It is not a silent retreat.",
+        text: "Nobody will ask you to stop talking or to give up your coffee.",
       },
     },
     {
       left: {
-        title: "And There Are Hours Where Nothing Is Planned.",
-        text: "Some people find that harder than anything else in the six days. We think it is the most important part.",
+        title: "It is not a networking room.",
+        text: "Nobody here will ask what you do, and that is not an accident.",
       },
-      right: null, // button goes here instead of a text item
+      right: {
+        title: "And there is time where nothing is planned.",
+        text: "Some people find that harder than anything else in the six days. I think it is one of the most important parts.",
+      },
     },
   ];
 
@@ -65,7 +68,6 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
     return () => observer.disconnect();
   }, []);
 
-   
   useEffect(() => {
     const element = preetiSectionRef.current;
 
@@ -91,12 +93,12 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
   }, []);
 
   return (
-    <>
+    <div id="what-this-is-not">
       <div ref={sectionRef}>
         <section className="w-full bg-white px-6 py-16 sm:px-8 sm:py-20 md:px-12 lg:px-20 mx-auto max-w-[1400px] ">
           <div className="mx-auto">
 
-            {/* Main Heading - LEFT → RIGHT */}
+            {/* Main Heading - CHANGED text */}
             <h2
               className={`mb-10 font-['Oswald'] text-3xl font-bold text-neutral-900 sm:mb-14 sm:text-4xl ${
                 isVisible
@@ -104,10 +106,10 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
                   : "opacity-0"
               }`}
             >
-              What This Is Not.
+              What this is not.
             </h2>
 
-            {/* 2-column x 3-row grid: each row renders one left cell + one right cell */}
+            {/* 2-column x 3-row grid */}
             <div className="grid grid-cols-1 gap-x-16 gap-y-10 md:grid-cols-2">
               {rows.map((row, rowIndex) => (
                 <React.Fragment key={rowIndex}>
@@ -131,90 +133,86 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
                     </p>
                   </div>
 
-                  {/* Right cell — either a text item, or the button on the last row */}
-                  {row.right ? (
-                    <div
-                      className={
-                        isVisible
-                          ? "animate-[fromBottom_1.5s_ease-out_both]"
-                          : "opacity-0"
-                      }
-                      style={{
-                        animationDelay: `${0.35 + rowIndex * 0.12}s`,
-                      }}
-                    >
-                      <h3 className="mb-2 font-semibold text-neutral-900 sm:text-xl font-[oswald]">
-                        {row.right.title}
-                      </h3>
+                  {/* Right cell: CHANGED, always a text item now, no empty placeholder */}
+                  <div
+                    className={
+                      isVisible
+                        ? "animate-[fromBottom_1.5s_ease-out_both]"
+                        : "opacity-0"
+                    }
+                    style={{
+                      animationDelay: `${0.35 + rowIndex * 0.12}s`,
+                    }}
+                  >
+                    <h3 className="mb-2 font-semibold text-neutral-900 sm:text-xl font-[oswald]">
+                      {row.right.title}
+                    </h3>
 
-                      <p className="text-sm leading-relaxed text-neutral-600 font-[syne]">
-                        {row.right.text}
-                      </p>
-                    </div>
-                  ) : (
-                    <div className="flex items-start">
-                     
-                    </div>
-                  )}
+                    <p className="text-sm leading-relaxed text-neutral-600 font-[syne]">
+                      {row.right.text}
+                    </p>
+                  </div>
                 </React.Fragment>
               ))}
             </div>
           </div>
-           <button
-                        onClick={() => setIsInvitationOpen(true)}
-                        className={`group relative mt-12 flex w-fit items-center gap-2 overflow-hidden font-['syne'] rounded-full border border-neutral-900 px-6 py-3 text-base font-medium text-neutral-900 ${
-                          isVisible
-                            ? "animate-[fromLeft_1.5s_ease-out_0.5s_both]"
-                            : "opacity-0"
-                        }`}
-                      >
-                        <span
-                          className="
-                            absolute
-                            left-1/2
-                            top-1/2
-                            h-full
-                            w-0
-                            -translate-x-1/2
-                            -translate-y-1/2
-                            rounded-full
-                            bg-neutral-900
-                            opacity-40
 
-                            transition-all
-                            duration-1000
-                            ease-in-out
+          {/* Button: CHANGED text to "Request an Invitation" */}
+          <button
+            onClick={() => setIsInvitationOpen(true)}
+            className={`group relative mt-12 flex w-fit items-center gap-2 overflow-hidden font-['syne'] rounded-full border border-neutral-900 px-6 py-3 text-base font-medium text-neutral-900 ${
+              isVisible
+                ? "animate-[fromLeft_1.5s_ease-out_0.5s_both]"
+                : "opacity-0"
+            }`}
+          >
+            <span
+              className="
+                absolute
+                left-1/2
+                top-1/2
+                h-full
+                w-0
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                bg-neutral-900
+                opacity-40
 
-                            group-hover:w-[150%]
-                            group-hover:opacity-100
-                          "
-                        />
+                transition-all
+                duration-1000
+                ease-in-out
 
-                        <span
-                          className="
-                            relative
-                            z-10
-                            flex
-                            items-center
-                            gap-2
-                            transition-colors
-                            duration-500
-                            group-hover:text-white
-                          "
-                        >
-                          Request An Invitation
+                group-hover:w-[150%]
+                group-hover:opacity-100
+              "
+            />
 
-                          <span
-                            className="
-                              transition-transform
-                              duration-500
-                              group-hover:translate-x-1
-                            "
-                          >
-                            <MoveRight />
-                          </span>
-                        </span>
-                      </button>
+            <span
+              className="
+                relative
+                z-10
+                flex
+                items-center
+                gap-2
+                transition-colors
+                duration-500
+                group-hover:text-white
+              "
+            >
+              Request an Invitation
+
+              <span
+                className="
+                  transition-transform
+                  duration-500
+                  group-hover:translate-x-1
+                "
+              >
+                <MoveRight />
+              </span>
+            </span>
+          </button>
         </section>
       </div>
 
@@ -222,7 +220,7 @@ const [isInvitationOpen, setIsInvitationOpen] = useState(false);
         isOpen={isInvitationOpen}
         onClose={() => setIsInvitationOpen(false)}
       />
-    </>
+    </div>
   );
 };
 
